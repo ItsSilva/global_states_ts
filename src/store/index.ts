@@ -2,6 +2,7 @@
 import { reducer } from './reducer';
 // Global state
 export let appStore = {
+    screen: 'REGISTER',
     backgroundColor: 'black',
     username: 'Juanes',
     id: 12345

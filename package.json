@@ -1,8 +1,7 @@
 {
-  "name": "clase-typescript",
+  "name": "clase-13",
   "version": "1.0.0",
   "main": "index.js",
- 
   "scripts": {
     "start": "serve",
     "build": "webpack --watch --mode=production"

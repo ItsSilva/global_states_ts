@@ -1,30 +1,28 @@
-import "./screens/dashboard";
-import "./screens/login";
-import "./screens/register";
-import './store/index';
-import { addObserver } from "./store/index";
-import { appStore } from "./store/index";
+import './screens/dashboard'
+import './screens/login'
+import './screens/register'
+import { addObserver } from './store/store';
+import { appState } from './store/store';
 
 class AppContainer extends HTMLElement {
-    constructor(){
+    constructor() {
         super();
-        this.attachShadow({mode: 'open'});
+        this.attachShadow({ mode: 'open' });
         addObserver(this);
     }
-    
-    connectedCallback(){
+
+    connectedCallback() {
         this.render();
     }
 
-    render(){
+    render() {
         if(this.shadowRoot) this.shadowRoot.innerHTML = '';
-
-        switch (appStore.screen){
+        switch(appState.screen){
             case 'LOGIN':
                 const login = this.ownerDocument.createElement('app-login');
                 this.shadowRoot?.appendChild(login);
                 break;
-                
+
             case 'REGISTER':
                 const register = this.ownerDocument.createElement('app-register');
                 this.shadowRoot?.appendChild(register);
@@ -33,9 +31,6 @@ class AppContainer extends HTMLElement {
             case 'DASHBOARD':
                 const dashboard = this.ownerDocument.createElement('app-dashboard');
                 this.shadowRoot?.appendChild(dashboard);
-                break;
-
-            default:
                 break;
         }
     }
